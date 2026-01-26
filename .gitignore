@@ -1,0 +1,14 @@
+# Ignore the huge dataset
+datasets/
+data/
+
+# Ignore training results (too big)
+runs/
+
+# Ignore Python junk
+__pycache__/
+*.pyc
+venv/
+.env
+*.mp4
+models/best.pt
