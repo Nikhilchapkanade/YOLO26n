@@ -1,136 +1,111 @@
-# 🚀 YOLO26 Traffic Analytics System
+<p align="center">
+  <h1 align="center">👁️ YOLO26n Traffic Analytics</h1>
+  <p align="center"><strong>Real-time vehicle detection, tracking & counting with the latest YOLO26</strong></p>
+  <p align="center"><em>Detects, tracks, and counts cars in drone footage — optimized for CPU inference.</em></p>
+</p>
 
-![YOLO26 Banner](https://img.shields.io/badge/YOLO-v26-blue) ![Python](https://img.shields.io/badge/Python-3.12-yellow) ![PyTorch](https://img.shields.io/badge/PyTorch-2.4%2B-red) ![License](https://img.shields.io/badge/License-MIT-green)
-
-A practical computer vision project that uses the latest **YOLO26** model to analyze traffic from drone footage. Built to work with the **VisDrone** dataset and optimized to run smoothly on standard CPUs.
-
----
-
-## 🌟 Key Features
-
-* ⚡ **Lightning Fast:** YOLO26's end-to-end detection skips slow post-processing steps.
-* 🧠 **Smart Training:** Uses the new MuSGD Optimizer to detect tiny vehicles accurately.
-* 🚁 **Drone-Ready:** Trained specifically on aerial views to spot cars, trucks, and buses.
-* 🚦 **Vehicle Counting:** Tracks and counts vehicles crossing virtual road lines.
-* 💻 **CPU Friendly:** Runs well on standard computers - no expensive GPU needed.
+<p align="center">
+  <img src="https://img.shields.io/badge/YOLO-v26-0099FF?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PyTorch-2.4+-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
+  <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square"/>
+</p>
 
 ---
 
-## 🎥 Demo & Results
+## 📸 Demo
 
-**Sample Detection Output:**
-
-<img width="100%" alt="Screenshot 2026-01-26 195538" src="https://github.com/user-attachments/assets/d06d484e-f4d2-476b-9683-c6a72c569f3b" />
+<img width="100%" alt="YOLO26n Detection" src="https://github.com/user-attachments/assets/d06d484e-f4d2-476b-9683-c6a72c569f3b" />
 
 *Vehicle detection with bounding boxes, confidence scores, and real-time counting.*
+
+---
+
+## ⚡ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🚀 **YOLO26 End-to-End** | Skips slow NMS post-processing for faster inference |
+| 🧠 **MuSGD Optimizer** | New optimizer for stable training on tiny objects |
+| 🚁 **Drone-Ready** | Trained on VisDrone dataset (10k aerial images) |
+| 🚦 **Vehicle Counting** | Tracks vehicles crossing virtual counting lines |
+| 💻 **CPU Friendly** | Runs smoothly without a GPU |
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# 1. Clone
+git clone https://github.com/Nikhilchapkanade/YOLO26n.git
+cd YOLO26n
+
+# 2. Install
+pip install -r requirements.txt
+
+# 3. Run vehicle counting
+python traffic_counter.py
+
+# 4. Or general detection
+python main.py --mode predict --source "data/traffic.mp4"
+
+# 5. Webcam mode
+python main.py --mode predict --source 0
+```
+
+---
+
+## 🏋️ Training Details
+
+| Parameter | Value |
+|-----------|-------|
+| Epochs | 20 (early stopping) |
+| Batch Size | 16 |
+| Image Size | 640×640 |
+| Precision | Mixed FP16 |
+| Optimizer | MuSGD |
+| Hardware | NVIDIA T4 (Colab Pro) |
+| Dataset | VisDrone2019 (6.5GB, ~10k images) |
+
+---
+
+## 📁 Project Structure
+
+```
+YOLO26n/
+├── main.py               # General detection script
+├── traffic_counter.py     # Vehicle counting with line crossing
+├── src/
+│   ├── trainer.py         # Training pipeline
+│   ├── inference.py       # Detection engine
+│   └── config.py          # Configuration
+├── models/
+│   ├── yolo26n.pt         # Base YOLO26 nano model
+│   └── best.pt            # Custom trained weights
+├── data/
+│   └── traffic.mp4        # Test video
+└── requirements.txt
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
 | Component | Technology |
-| :--- | :--- |
-| **Model** | YOLO26n (Nano) - Ultralytics |
-| **Language** | Python 3.12 |
-| **Framework** | PyTorch 2.4+ |
-| **Vision** | OpenCV |
-| **Dataset** | VisDrone2019 (6.5GB, ~10k images) |
-| **Training** | NVIDIA T4 GPU (Google Colab Pro) |
+|-----------|-----------|
+| Model | YOLO26n (Nano) — Ultralytics |
+| Framework | PyTorch 2.4+ |
+| Vision | OpenCV |
+| Dataset | VisDrone2019 |
+| Training | NVIDIA T4 GPU (Google Colab) |
 
 ---
 
-## 📂 Project Structure
+## 🔮 Future Roadmap
 
-```text
-YOLO26-Advanced-Project/
-├── data/
-│   └── traffic.mp4          # Test video file
-├── models/
-│   ├── yolo26n.pt           # Base YOLO26 model
-│   └── best.pt              # Custom trained model
-├── outputs/
-│   ├── videos/              # Processed videos
-│   ├── images/              # Detection screenshots
-│   └── logs/                # Count statistics
-├── src/
-│   ├── trainer.py           # Training logic
-│   ├── inference.py         # Detection engine
-│   └── config.py            # Configuration
-├── main.py                  # General detection script
-├── traffic_counter.py       # Vehicle counting script
-├── requirements.txt         # Dependencies
-└── README.md                # Documentation
-⚙️ Installation
-Step 1: Clone Repository
-
-Bash
-git clone [https://github.com/Nikhilchapkanade/YOLO26-.git](https://github.com/Nikhilchapkanade/YOLO26-.git)
-cd YOLO26-
-Step 2: Install Dependencies
-
-Bash
-pip install -r requirements.txt
-Step 3: Setup Model
-
-Place your trained model best.pt in the models/ directory.
-
-🚀 Usage
-Option 1: Vehicle Counting (Primary Feature)
-Count vehicles crossing a virtual line on the road:
-
-Bash
-python traffic_counter.py
-Tip: Edit path_to_video inside traffic_counter.py to use your own video.
-
-Option 2: General Object Detection
-Detect objects without counting:
-
-Analyze a video file:
-
-Bash
-python main.py --mode predict --source "data/traffic.mp4"
-Use webcam:
-
-Bash
-python main.py --mode predict --source 0
-🧠 Model Training Details
-The model was fine-tuned with the following configuration:
-
-Epochs: 20 (Early Stopping enabled)
-
-Batch Size: 16
-
-Image Size: 640x640
-
-Precision: Mixed (FP16)
-
-Optimizer: MuSGD (Optimized for Stability)
-
-Hardware: NVIDIA T4 GPU
-
-🔮 Future Roadmap
-[ ] Speed Estimation: Calculate vehicle speeds using perspective transform.
-
-[ ] Database Integration: Store traffic data in SQL database.
-
-[ ] Multi-Lane Tracking: Separate counts for each lane.
-
-[ ] Web Dashboard: Real-time visualization in browser.
-
-[ ] Edge Deployment: Run on Raspberry Pi 5 with Hailo-8.
-
-🤝 Contributing
-Contributions are welcome!
-
-Fork the repository.
-
-Create your feature branch (git checkout -b feature/AmazingFeature).
-
-Commit changes (git commit -m 'Add AmazingFeature').
-
-Push to branch (git push origin feature/AmazingFeature).
-
-Open a Pull Request.
-
-📝 License
-This project is licensed under the MIT License.
+- [ ] Speed estimation via perspective transform
+- [ ] SQL database for traffic data storage
+- [ ] Multi-lane tracking with per-lane counts
+- [ ] Real-time web dashboard
+- [ ] Edge deployment on Raspberry Pi 5 + Hailo-8
